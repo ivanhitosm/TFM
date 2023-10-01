@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dubbr</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid p-5">
+        <div class="row">
+            <!-- Fourth Container -->
+            <div class="col-md-12">
+                <h1>Dubbr</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- First Container -->
+            <div class="col-md-6">
+               <div class="card">
+                   <div class="card-body">
+                       <h2>Upload Audio for Transcription</h2>
+                       <form action="/transcribe" method="post" enctype="multipart/form-data">
+                           <input type="file" name="file">
+                           <input type="submit" value="Transcribe">
+                       </form>
+                       {% if transcription %}
+                       <h3>Transcription Result:</h3>
+                       <p>{{ transcription }}</p>
+                       {% endif %}
+                       {% if error %}
+                       <p style="color: red;">{{ error }}</p>
+                       {% endif %}
+                   </div>
+               </div>
+           </div>
+
+            <!-- Second Container -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Audio Cloning App</h1>
+                        <p>
+                            Upload an audio file and input an utterance to
+                            generate a cloned
+                            version.
+                        </p>
+
+                        <form action="/process" method="post" enctype="multipart/form-data">
+                            <label for="file">Upload Audio:</label>
+                            <input type="file" name="file" accept=".wav, .mp3" required /><br />
+
+                            <label for="textarea">Utterance:</label><br />
+                            <textarea name="textarea" rows="7" cols="50"
+                                placeholder="Enter your utterance here..."></textarea><br /><br />
+
+                            <input type="submit" value="Upload" />
+                        </form>
+                        <div id="output">{{ output|safe }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Third Container -->
+            <div class="col-md-12 text-center">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/translate" method="post">
+                            <div class="row">
+
+                                <div class="col-2 ">
+                                    <h2>Translation:</h2>
+                                </div>
+
+                                <div class="col-8"><input type="submit" value="translate" /></div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="source_lang">Source
+                                        Language:</label>
+                                    <select name="source_lang">
+                                        {% for lang in languages %}
+                                        <option value="{{ lang }}">{{ lang
+                                            }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="target_lang">Target
+                                        Language:</label>
+                                    <select name="target_lang">
+                                        {% for lang in languages %}
+                                        <option value="{{ lang }}">{{ lang
+                                            }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <textarea name="text" rows="4" cols="50"
+                                        placeholder="Enter text to translate...">{{text}}</textarea>
+                                </div>
+                        </form>
+                        <div class="col-6">
+                            <textarea rows="4" cols="50" readonly>
+                                        {{ translation }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
