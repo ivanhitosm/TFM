@@ -39,9 +39,13 @@ Para configurar Dubbr, siga estos pasos:
 
 ### Download Pretrained Models
 Download the latest [here](https://github.com/CorentinJ/Real-Time-Voice-Cloning/wiki/Pretrained-models/2cd3887f379d4921b193214973b463043efa5c23).
+
 asegurarse de que los modelos estan el sitio correcto
+
 vocoder/saved_models/pretrained/pretrained.pt
+
 synthesizer/saved_models/logs-pretrained/taco_pretrained/tacotron_model.ckpt-278000.data-00000-of-00001
+
 encoder\saved_models\pretrained.pt
 
 2. Ir al directorio del proyecto:
