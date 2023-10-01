@@ -77,18 +77,6 @@ Los usuarios pueden utilizar Dubbr de manera efectiva moviéndose entre diferent
 
 
 ## ejemplo
-Original:
-<audio controls>
-  <source src="static/alphabet.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-creado:
-<audio controls>
-  <source src="static/a long time ago, the second December, a cup of water.wav" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
 puedes ver mas ejemplos y audios de prueba en la carpeta static
 
 
